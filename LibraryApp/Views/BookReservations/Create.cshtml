@@ -1,0 +1,56 @@
+﻿@using System.Security.Claims;
+
+@model LibraryApp.Models.BookReservation
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Book reservation</h1>
+
+<h4>Confirmation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="BookId" class="control-label"></label>
+                @if (ViewBag.SpecyficBookReservation != null)
+                {
+                    <input asp-for="BookId" class="form-control" value="@ViewBag.SpecyficBookId" readonly />
+                }
+                else
+                {
+                    <select asp-for="BookId" class="form-control" asp-items="ViewBag.BookId"></select>
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="ReservationDate" class="control-label"></label>
+                <input asp-for="ReservationDate" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd HH:mm")" readonly />
+                <span asp-validation-for="ReservationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <input asp-for="UserId" class="form-control" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" readonly />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" value="@User.FindFirstValue(ClaimTypes.Name)" readonly />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Confirm" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
