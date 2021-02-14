@@ -9,7 +9,7 @@ namespace LibraryApp.Models
     public class Book
     {
         [Key]
-        public int Id { get; set; }
+        public int BookId { get; set; }
 
         public string Title { get; set; }
 
@@ -19,5 +19,7 @@ namespace LibraryApp.Models
         public DateTime ReleaseDate { get; set; }
 
         public string Description { get; set; }
+
+        public ICollection<BookReservation> BookReservations { get; set; }
     }
 }

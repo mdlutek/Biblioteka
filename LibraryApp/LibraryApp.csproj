@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Migrations\20210214114751_BookModelWithView.cs" />
+    <Compile Remove="Data\Migrations\20210214114751_BookModelWithView.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210214200533_BooksReservations.cs" />
+    <Compile Remove="Data\Migrations\20210214200533_BooksReservations.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210214202135_BooksReservations.cs" />
+    <Compile Remove="Data\Migrations\20210214202135_BooksReservations.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210214202407_BooksAndBooksReservation.cs" />
+    <Compile Remove="Data\Migrations\20210214202407_BooksAndBooksReservation.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.11" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.11" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.11" />

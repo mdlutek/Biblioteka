@@ -36,7 +36,7 @@ namespace LibraryApp.Controllers
             }
 
             var book = await _context.Books
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.BookId == id);
             if (book == null)
             {
                 return NotFound();
@@ -56,7 +56,7 @@ namespace LibraryApp.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Author,ReleaseDate,Description")] Book book)
+        public async Task<IActionResult> Create([Bind("BookId,Title,Author,ReleaseDate,Description")] Book book)
         {
             if (ModelState.IsValid)
             {
@@ -88,9 +88,9 @@ namespace LibraryApp.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Author,ReleaseDate,Description")] Book book)
+        public async Task<IActionResult> Edit(int id, [Bind("BookId,Title,Author,ReleaseDate,Description")] Book book)
         {
-            if (id != book.Id)
+            if (id != book.BookId)
             {
                 return NotFound();
             }
@@ -104,7 +104,7 @@ namespace LibraryApp.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!BookExists(book.Id))
+                    if (!BookExists(book.BookId))
                     {
                         return NotFound();
                     }
@@ -127,7 +127,7 @@ namespace LibraryApp.Controllers
             }
 
             var book = await _context.Books
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.BookId == id);
             if (book == null)
             {
                 return NotFound();
@@ -149,7 +149,7 @@ namespace LibraryApp.Controllers
 
         private bool BookExists(int id)
         {
-            return _context.Books.Any(e => e.Id == id);
+            return _context.Books.Any(e => e.BookId == id);
         }
     }
 }
